@@ -33,5 +33,7 @@ defmodule Blabber.Endpoint do
     key: "_blabber_key",
     signing_salt: "OG7vd0h0"
 
+  plug CORSPlug
+
   plug Blabber.Router
 end
