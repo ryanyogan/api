@@ -1,5 +1,7 @@
 # Blabber
 
+[![Build Status](http://162.243.194.212/api/badges/ryanyogan/api/status.svg)](http://162.243.194.212/ryanyogan/api)
+
 To start your Phoenix app:
 
   * Install dependencies with `mix deps.get`
