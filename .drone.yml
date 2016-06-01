@@ -5,7 +5,7 @@ build:
     - apk add postgresql-client
     - mix local.hex --force && mix local.rebar --force
     - mix do deps.get, deps.compile
-    - MIX_ENV=test mix ecto.create ecto.migrate -r Rumbl.Repo
+    - MIX_ENV=test mix ecto.create ecto.migrate -r Blabber.Repo
     - mix test
 
 cache:
