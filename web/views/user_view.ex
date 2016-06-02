@@ -1,23 +1,11 @@
 defmodule Blabber.UserView do
   use Blabber.Web, :view
+  use JaSerializer.PhoenixView
 
-  alias __MODULE__
+  attributes [:email]
+  has_many :rooms, link: :rooms_link
 
-  def render("index.json", %{users: users}) do
-    %{data: render_many(users, UserView, "user.json")}
-  end
-
-  def render("show.json", %{user: user}) do
-    %{data: render_one(user, UserView, "user.json")}
-  end
-
-  def render("user.json", %{user: user}) do
-    %{
-      "type": "users",
-      "id": user.id,
-      "attributes": %{
-        "email": user.email
-      }
-    }
+  def rooms_link(user, conn) do
+    user_rooms_url(conn, :index, user.id)
   end
 end

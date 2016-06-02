@@ -18,9 +18,13 @@ defmodule Blabber.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {Blabber, []},
-     applications: [:phoenix, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :comeonin]]
+     applications: app_list(Mix.env)]
   end
+
+  def app_list(:test), do: [:ex_machina | app_list]
+  def app_list(_), do: app_list
+  def app_list, do: [:phoenix, :cowboy, :logger,
+                     :gettext, :phoenix_ecto, :postgrex, :comeonin]
 
   # Specifies which paths to compile per environment.
   defp elixirc_paths(:test), do: ["lib", "web", "test/support"]
@@ -38,6 +42,7 @@ defmodule Blabber.Mixfile do
      {:guardian, "~> 0.10.0"},
      {:comeonin, "~> 2.4"},
      {:ja_serializer, "~> 0.8.1"},
+     {:ex_machina, "~> 0.6.1", only: :test},
      {:cowboy, "~> 1.0"}]
   end
 
