@@ -42,6 +42,7 @@ defmodule Blabber.Mixfile do
      {:guardian, "~> 0.10.0"},
      {:comeonin, "~> 2.4"},
      {:ja_serializer, "~> 0.8.1"},
+     {:exgravatar, "~> 2.0.0"},
      {:ex_machina, "~> 0.6.1", only: :test},
      {:cowboy, "~> 1.0"}]
   end

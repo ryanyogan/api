@@ -16,7 +16,7 @@ defmodule Blabber.RegistrationController do
       {:ok, user} ->
         conn
         |> put_status(:created)
-        |> render(Blabber.UserView, "show.json", user: user)
+        |> render(Blabber.UserView, "show.json", data: user)
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)

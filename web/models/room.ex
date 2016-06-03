@@ -5,10 +5,12 @@ defmodule Blabber.Room do
     field :name, :string
     belongs_to :owner, Blabber.Owner
 
+    has_many :messages, Blabber.Message
+
     timestamps
   end
 
-  @required_fields ~w(name)
+  @required_fields ~w(name owner_id)
   @optional_fields ~w()
 
   @doc """
@@ -22,5 +24,6 @@ defmodule Blabber.Room do
     |> cast(params, @required_fields, @optional_fields)
     |> validate_length(:name, min: 4)
     |> unique_constraint(:name)
+    |> assoc_constraint(:owner)
   end
 end

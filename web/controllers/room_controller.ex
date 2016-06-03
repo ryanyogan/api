@@ -11,12 +11,12 @@ defmodule Blabber.RoomController do
     |> where(owner_id: ^user_id)
     |> Repo.all
 
-    render(conn, "index.json", rooms: rooms)
+    render(conn, "index.json", data: rooms)
   end
 
   def index(conn, _params) do
     rooms = Repo.all(Room)
-    render(conn, "index.json", rooms: rooms)
+    render(conn, "index.json", data: rooms)
   end
 
   def create(conn, %{"data" => %{"type" => "rooms", "attributes" => room_params, "relationships" => _}}) do
@@ -29,7 +29,7 @@ defmodule Blabber.RoomController do
         conn
         |> put_status(:created)
         |> put_resp_header("location", room_path(conn, :show, room))
-        |> render("show.json", room: room)
+        |> render("show.json", data: room)
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
@@ -39,7 +39,7 @@ defmodule Blabber.RoomController do
 
   def show(conn, %{"id" => id}) do
     room = Repo.get!(Room, id)
-    render(conn, "show.json", room: room)
+    render(conn, "show.json", data: room)
   end
 
   def update(conn, %{"id" => id, "data" => %{"id" => _, "type" => "rooms", "attributes" => room_params}}) do
@@ -53,7 +53,7 @@ defmodule Blabber.RoomController do
 
     case Repo.update(changeset) do
       {:ok, room} ->
-        render(conn, "show.json", room: room)
+        render(conn, "show.json", data: room)
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
