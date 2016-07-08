@@ -1,0 +1,17 @@
+language: elixir
+elixir:
+- 1.2
+otp_release:
+- 18.3
+sudo: false
+addons:
+  postgresql: '9.4'
+before_script:
+- psql -c 'create database slacker_test;' -U postgres
+deploy:
+  provider: heroku
+  api_key:
+    secure: cjn0sN4YcG4lH6gz3l7OhuShXN0Vxsn583B+/5S5kGJrLBhXu1euOMNPu2hkcbKjhy5XOD9KU+0No7LihjVc8SeagI6M7SjbG+AnGMwC2WppC6zwwRsVfL+lZkhoHGEwxsIaT48S8ZPV7pD8/bkCSSxpS8CV9QVaJ7E6GO2AmffBWm91JXM4QSSMlPJYbJ5rxnFNIalYrmG9Qg9BCxv3muh8b4ZWwsCdkRmxyaMMSqvVo4rp87os6WWJ2f+nSlyNYUlMEvwiiWsoG3hKhhY8j7jbeLLV0gWKj4CsvYL9unOdoDDnNUiiNE/efJDfEXK78XHdqQGIA1hybiWJ42DgUkmJaenD4YNESLxXOHM/rPjkHQbCtj59Dcd3PEtPwVy65lSp9ZPRx/+gwznGuoOKG4HwrFiOyDarexpClxazOpwZxDuhVC1tG0Uws7jv1/nhxgoOQLKhPbRUHfh9uhxHPsiFkpqe29Fh0bDuEHirw2rgPe4IPafRJ6/c4aBqgZjbsteqjVhu9eouYL6Vd57fJjgr9IR64RCl7aZwQEIyf788NNESPwAlQl6Axh0PrV5zMrAfwCiqYz6LghJ4T4w81sRlP9V1JNkAFsZKbGMv2Oske9vwYpLkWol7lID2HFElLyP0RNTmgZPLBTOZzFfuOgGoxmfvWlFPcmA5A1A1mrY=
+  app: warm-cliffs-73372
+  on:
+    repo: ryanyogan/api
