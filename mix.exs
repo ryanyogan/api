@@ -34,6 +34,7 @@ defmodule Slacker.Mixfile do
      {:postgrex, ">= 0.0.0"},
      {:phoenix_ecto, "~> 2.0"},
      {:gettext, "~> 0.9"},
+     {:cors_plug, "~> 1.1"},
      {:cowboy, "~> 1.0"}]
   end
 

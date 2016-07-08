@@ -33,5 +33,6 @@ defmodule Slacker.Endpoint do
     key: "_slacker_key",
     signing_salt: "N+Ylt6qJ"
 
+  plug CORSPlug
   plug Slacker.Router
 end
